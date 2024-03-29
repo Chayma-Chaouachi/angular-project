@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Employee List</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> First Name</th>
+                    <th> Last Name</th>
+                    <th> Email Id</th>
+                    <th> Photo</th> <!-- Nouvelle colonne pour afficher la photo -->
+                    <th> Actions</th>
+                </tr>
+            </thead>
+            <tbody><!-- let==fo  //i=compteurr  -->
+                <tr *ngFor="let employee of employees" (dblclick)="updateEmployee(employee.id)">
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.emailId}}</td>
+                    <td>
+                        <!-- Ajoutez un bouton ou une icône pour afficher la photo -->
+                        <button (click)="viewEmployeePhoto(employee.id)" class="btn btn-info">View Photo</button>
+                    </td>
+                    <td>
+                        <button (click)="updateEmployee(employee.id)" class="btn btn-info">Update</button>
+                        <button (click)="deleteEmployee(employee.id)" class="btn btn-danger"
+                            style="margin-left: 10px">Delete</button>
+                        <button (click)="employeeDetails(employee.id)" class="btn btn-info"
+                            style="margin-left: 10px">View</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- Ajoutez ces boutons de pagination -->
+    <div class="d-flex justify-content-between mt-3">
+        <button (click)="getPreviousPage()" [disabled]="currentPage === 0" class="btn btn-secondary">Previous Page</button>
+        <button (click)="getNextPage()" class="btn btn-secondary">Next Page</button>
+    </div>
+</div>
